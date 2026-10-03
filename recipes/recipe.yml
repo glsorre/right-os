@@ -2,44 +2,80 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
 name: right-os
-# description will be included in the image's metadata
-description: This is my personal OS image.
+description: right right OS image.
 
-# the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: latest # You can pin to a specific version of Fedora as well
+base-image: ghcr.io/blue-build/base-images/fedora-cosmic
+image-version: latest
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
+platforms:
+  - linux/amd64/v2
+
 modules:
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+        destination: /
 
   - type: dnf
     repos:
       copr:
         - atim/starship
+        - bieszczaders/kernel-cachyos
+        - bieszczaders/kernel-cachyos-addons
     install:
       packages:
-        - micro
+        - libdnf5-plugin-actions
+        - git
+        - kernel-cachyos
+        - neovim
+        - scx-manager
+        - scx-scheds
+        - scx-tools
         - starship
+        - zsh
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - kernel
+        - kernel-core
+        - kernel-modules
+        - kernel-modules-core
+        - kernel-modules-extra
+    replace:
+      - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons
+        packages:
+          - old: ram-generator-defaults
+            new: cachyos-settings
+            allow-erasing: true
 
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: true
         scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+        install:
+          - com.github.rafostar.Clapper
+          - com.github.tchx84.Flatseal
+          - com.google.Chrome
+          - com.ranfdev.DistroShelf
+          - io.github.flattool.Warehouse
+          - io.github.kolunmi.Bazaar
+          - io.missioncenter.MissionCenter
+          - io.podman_desktop.PodmanDesktop
+      - scope: user
 
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: script
+    scripts:
+      - 1-password.sh
+      - cachyos-kernel-default.sh
+
+  - type: soar
+    additional-repos: true
+    auto-upgrade: true
+    upgrade-interval: '12h'
+
+  - type: justfiles
+    validate: true
+    install: true
+    include:
+      - shell.just
+
+  - type: signing
