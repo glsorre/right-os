@@ -30,6 +30,17 @@ To rebase an existing atomic Fedora installation to the latest build:
 
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
+## Secure Boot
+
+The CachyOS kernel is signed with the right-os Machine Owner Key (MOK). To boot with Secure Boot enabled, enroll the key once:
+
+- Import the key and set a one-time password:
+  ```
+  ujust enroll-secure-boot-key
+  ```
+- Reboot. In the blue MokManager screen, choose "Enroll MOK" and enter the password.
+- Enable Secure Boot in your firmware settings, then check it with `mokutil --sb-state`.
+
 ## ISO
 
 If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/how-to/generate-iso/#_top). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.

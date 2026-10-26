@@ -3,3 +3,5 @@ cosign.private
 /Containerfile
 *.iso
 *.iso-CHECKSUM
+MOK.priv
+.DS_Store

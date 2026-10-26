@@ -66,6 +66,17 @@ modules:
     scripts:
       - 1-password.sh
       - cachyos-kernel-default.sh
+      - initramfs.sh
+
+  - type: script
+    secrets:
+      - type: env
+        name: KERNEL_SIGNING_KEY
+        mount:
+          type: file
+          destination: /tmp/certs/MOK.priv
+    scripts:
+      - sign-kernel.sh
 
   - type: soar
     additional-repos: true
@@ -77,5 +88,6 @@ modules:
     install: true
     include:
       - shell.just
+      - secureboot.just
 
   - type: signing
