@@ -26,6 +26,7 @@ modules:
       packages:
         - libdnf5-plugin-actions
         - git
+        - hipblas
         - kernel-cachyos
         - neovim
         - nodejs24
