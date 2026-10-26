@@ -1,7 +1,7 @@
 zsh-setup:
     #!/usr/bin/env bash
     set -euxo pipefail
-    sudo chmod -s $(which zsh) $USER
+    sudo usermod -s "$(command -v zsh)" "$USER"
     echo "ZSH is now the default shell for $USER"
 
 antidote-setup:
@@ -19,7 +19,4 @@ dotfiles-setup:
     ln -s $HOME/.dotfiles/gitignore-global $HOME/.gitignore-global
     echo "Dotfiles are now installed"
 
-shell-setup:
-    just zsh-setup
-    just antidote-setup
-    just dotfiles-setup
+shell-setup: zsh-setup antidote-setup dotfiles-setup
