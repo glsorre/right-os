@@ -30,6 +30,12 @@ modules:
         - neovim
         - nodejs24
         - nodejs24-npm
+        - rocm-clinfo
+        - rocm-hip
+        - rocm-opencl
+        - rocm-runtime
+        - rocm-smi
+        - rocminfo
         - scx-manager
         - scx-scheds
         - scx-tools
@@ -92,5 +98,6 @@ modules:
     include:
       - shell.just
       - secureboot.just
+      - rocm.just
 
   - type: signing
