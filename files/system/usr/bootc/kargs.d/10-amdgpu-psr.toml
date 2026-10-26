@@ -1,0 +1,2 @@
+kargs = ["amdgpu.dcdebugmask=0x610"]
+match-architectures = ["x86_64"]
