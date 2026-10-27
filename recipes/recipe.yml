@@ -26,17 +26,12 @@ modules:
       packages:
         - libdnf5-plugin-actions
         - git
-        - hipblas
         - kernel-cachyos
+        - lm_sensors-libs
         - neovim
+        - nethogs
         - nodejs24
         - nodejs24-npm
-        - rocm-clinfo
-        - rocm-hip
-        - rocm-opencl
-        - rocm-runtime
-        - rocm-smi
-        - rocminfo
         - scx-manager
         - scx-scheds
         - scx-tools
