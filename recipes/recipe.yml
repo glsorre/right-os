@@ -73,12 +73,6 @@ modules:
     upgrade-interval: '12h'
 
   - type: script
-    scripts:
-      - 1-password.sh
-      - cachyos-kernel-default.sh
-      - initramfs.sh
-
-  - type: script
     secrets:
       - type: env
         name: KERNEL_SIGNING_KEY
@@ -86,6 +80,10 @@ modules:
           type: file
           destination: /tmp/certs/MOK.priv
     scripts:
+      - 1-password.sh
+      - cachyos-kernel-default.sh
+      - tuxedo-drivers.sh
+      - initramfs.sh
       - sign-kernel.sh
 
   - type: justfiles

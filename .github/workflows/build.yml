@@ -42,3 +42,6 @@ jobs:
 
           # enabled by default, disable if your image is small and you want faster builds
           maximize_build_space: true
+
+          # rechunk the final image so updates only download the parts that changed
+          build_chunked_oci: true
