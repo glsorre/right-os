@@ -32,6 +32,7 @@ modules:
         - nethogs
         - nodejs24
         - nodejs24-npm
+        - podman-docker
         - scx-manager
         - scx-scheds
         - scx-tools
