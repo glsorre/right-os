@@ -32,6 +32,7 @@ modules:
         - nethogs
         - nodejs24
         - nodejs24-npm
+        - openssh-server
         - podman-docker
         - scx-manager
         - scx-scheds
@@ -52,6 +53,11 @@ modules:
           - old: ram-generator-defaults
             new: cachyos-settings
             allow-erasing: true
+
+  - type: systemd
+    system:
+      enabled:
+        - sshd.service
 
   - type: default-flatpaks
     configurations:
