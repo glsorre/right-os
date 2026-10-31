@@ -94,6 +94,7 @@ modules:
           destination: /tmp/certs/MOK.priv
     scripts:
       - 1-password.sh
+      - vscode-cursor.sh
       - cachyos-kernel-default.sh
       - tuxedo-drivers.sh
       - initramfs.sh
@@ -105,6 +106,5 @@ modules:
     include:
       - shell.just
       - secureboot.just
-      - rocm.just
-
+      
   - type: signing
