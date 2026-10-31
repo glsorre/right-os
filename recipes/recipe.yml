@@ -33,6 +33,7 @@ modules:
         - nodejs24
         - nodejs24-npm
         - openssh-server
+        - podman-compose
         - podman-docker
         - scx-manager
         - scx-scheds
@@ -60,12 +61,16 @@ modules:
       enabled:
         - sshd.service
         - tailscaled.service
+    user:
+      enabled:
+        - podman.socket
 
   - type: default-flatpaks
     configurations:
       - notify: true
         scope: system
         install:
+          - com.github.marhkb.Pods
           - com.github.rafostar.Clapper
           - com.github.tchx84.Flatseal
           - com.google.Chrome
@@ -73,7 +78,6 @@ modules:
           - io.github.flattool.Warehouse
           - io.github.kolunmi.Bazaar
           - io.missioncenter.MissionCenter
-          - io.podman_desktop.PodmanDesktop
       - scope: user
 
   - type: soar
