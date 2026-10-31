@@ -38,6 +38,7 @@ modules:
         - scx-scheds
         - scx-tools
         - starship
+        - tailscale
         - zsh
         - uv
     remove:
@@ -58,6 +59,7 @@ modules:
     system:
       enabled:
         - sshd.service
+        - tailscaled.service
 
   - type: default-flatpaks
     configurations:
