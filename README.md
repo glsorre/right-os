@@ -41,6 +41,17 @@ The CachyOS kernel is signed with the right-os Machine Owner Key (MOK). To boot 
 - Reboot. In the blue MokManager screen, choose "Enroll MOK" and enter the password.
 - Enable Secure Boot in your firmware settings, then check it with `mokutil --sb-state`.
 
+## XERJ
+
+[XERJ](https://github.com/xerj-org/xerj) runs as the `xerj.service` user service. It listens on port 9200. The firewall opens that port only on Tailscale.
+
+- Keep it running after you log out (once): `ujust linger-setup`
+- Get the API key: `cat ~/.local/state/xerj/admin.key`
+- Connect a client with `xerj mcp` and set:
+  - `XERJ_URL=http://<tailscale-name>:9200` on other machines
+  - `XERJ_URL=http://host.containers.internal:9200` in devcontainers
+  - `XERJ_AUTH="ApiKey <key>"`
+
 ## ISO
 
 If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/how-to/generate-iso/#_top). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.

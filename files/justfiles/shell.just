@@ -20,3 +20,6 @@ dotfiles-setup:
     echo "Dotfiles are now installed"
 
 shell-setup: zsh-setup antidote-setup dotfiles-setup
+
+linger-setup:
+    loginctl enable-linger "$USER"

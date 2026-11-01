@@ -1,0 +1,14 @@
+[Unit]
+Description=XERJ search node
+After=network-online.target
+
+[Service]
+Environment=XERJ_BIND_ADDRESS=0.0.0.0
+# Tailscale encrypts remote traffic; firewalld keeps the LAN closed.
+Environment=XERJ_ALLOW_INSECURE_NETWORK_BIND=true
+StateDirectory=xerj
+ExecStart=/usr/bin/xerj --data-dir %S/xerj
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
