@@ -1,0 +1,12 @@
+[Unit]
+Description=Cursor dev tunnel
+After=network-online.target
+
+[Service]
+# Own CLI dir so it does not share the lock/state of code-tunnel.service.
+ExecStart=/usr/share/cursor/bin/cursor-tunnel tunnel --accept-server-license-terms --name %H --cli-data-dir %h/.cursor/tunnel-cli
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

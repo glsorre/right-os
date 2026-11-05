@@ -66,6 +66,7 @@ modules:
         - podman.socket
         - xerj.service
         - code-tunnel.service
+        - cursor-tunnel.service
 
   - type: default-flatpaks
     configurations:
@@ -97,6 +98,7 @@ modules:
     scripts:
       - 1-password.sh
       - vscode-cursor.sh
+      - grok-bot.sh
       - xerj.sh
       - cachyos-kernel-default.sh
       - tuxedo-drivers.sh
