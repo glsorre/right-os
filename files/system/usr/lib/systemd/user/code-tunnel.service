@@ -1,0 +1,11 @@
+[Unit]
+Description=VS Code dev tunnel
+After=network-online.target
+
+[Service]
+ExecStart=/usr/share/code/bin/code-tunnel tunnel --accept-server-license-terms --name %H
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
