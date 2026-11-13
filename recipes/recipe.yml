@@ -56,7 +56,7 @@ modules:
           - old: ram-generator-defaults
             new: cachyos-settings
             allow-erasing: true
-            install-weak-deps: true
+            install-weak-deps: false
 
   - type: systemd
     system:
