@@ -49,12 +49,14 @@ modules:
         - kernel-modules
         - kernel-modules-core
         - kernel-modules-extra
+        - system-oomd-defaults
     swap:
       - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons
         packages:
           - old: ram-generator-defaults
             new: cachyos-settings
             allow-erasing: true
+            install-weak-deps: true
 
   - type: systemd
     system:
