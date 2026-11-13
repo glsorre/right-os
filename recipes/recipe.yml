@@ -30,8 +30,8 @@ modules:
         - lm_sensors-libs
         - neovim
         - nethogs
-        - nodejs24
-        - nodejs24-npm
+        - nodejs26
+        - nodejs26-npm
         - openssh-server
         - podman-compose
         - podman-docker
@@ -49,13 +49,10 @@ modules:
         - kernel-modules
         - kernel-modules-core
         - kernel-modules-extra
-    replace:
+    swap:
       - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons
         packages:
           - old: ram-generator-defaults
-            new: cachyos-settings
-            allow-erasing: true
-          - old: systemd-oomd-defaults
             new: cachyos-settings
             allow-erasing: true
 
