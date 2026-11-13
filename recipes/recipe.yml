@@ -55,6 +55,9 @@ modules:
           - old: ram-generator-defaults
             new: cachyos-settings
             allow-erasing: true
+          - old: systemd-oomd-defaults
+            new: cachyos-settings
+            allow-erasing: true
 
   - type: systemd
     system:
