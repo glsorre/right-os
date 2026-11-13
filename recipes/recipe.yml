@@ -50,7 +50,7 @@ modules:
         - kernel-modules-core
         - kernel-modules-extra
         - system-oomd-defaults
-    swap:
+    replace:
       - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons
         packages:
           - old: ram-generator-defaults
